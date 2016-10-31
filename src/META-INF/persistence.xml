@@ -4,6 +4,8 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>org.catolica.prog4.persistencia.entities.User</class>
     <class>org.catolica.prog4.persistencia.entities.Rule</class>
+    <class>org.catolica.prog4.persistencia.entities.Category</class>
+    <class>org.catolica.prog4.persistencia.entities.Product</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/prog4?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

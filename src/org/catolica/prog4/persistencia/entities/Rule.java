@@ -8,10 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import org.eclipse.persistence.annotations.Customizer;
 
 @Entity
-@Customizer(org.catolica.prog4.persistencia.customizers.RuleCustomizer.class)
 public class Rule implements Serializable {
 
     private static final long serialVersionUID = 1L;
