@@ -76,7 +76,7 @@ public class TestarPersistencia {
 
     private static void createUserTest() {
         System.out.println("\n createUserTest...");
-        Map<String, String> datas = new HashMap<>(5);
+        Map<String, String> datas = new HashMap<>(8);
         datas.put("Fabio", "Administrador");
         datas.put("João", "Comprador");
         datas.put("José", "Vendedor");
@@ -130,7 +130,7 @@ public class TestarPersistencia {
 
     private static void createProductTest() {
         System.out.println("\n createTest...");
-        Map<String, String> datas = new HashMap<>(5);
+        Map<String, String> datas = new HashMap<>(8);
         datas.put("Chocolate", "Convenience");
         datas.put("Pair of Shoes", "Shopping");
         datas.put("BMW", "Specialty");
