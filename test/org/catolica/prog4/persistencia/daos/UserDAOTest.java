@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
-import javax.persistence.Persistence;
 import org.catolica.prog4.persistencia.daos.exceptions.NonexistentEntityException;
 import org.catolica.prog4.persistencia.entities.User;
+import org.catolica.prog4.persistencia.helpers.EntityManagerFactoryManager;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.FixMethodOrder;
@@ -25,7 +25,7 @@ public class UserDAOTest {
     private final EntityManagerFactory factory;
 
     public UserDAOTest() {
-        factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+        factory = EntityManagerFactoryManager.getEntityManagerFactory();
     }
 
     @Test

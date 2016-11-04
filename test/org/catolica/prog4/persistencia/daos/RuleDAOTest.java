@@ -3,10 +3,10 @@ package org.catolica.prog4.persistencia.daos;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import org.catolica.prog4.persistencia.daos.exceptions.IllegalOrphanException;
 import org.catolica.prog4.persistencia.daos.exceptions.NonexistentEntityException;
 import org.catolica.prog4.persistencia.entities.Rule;
+import org.catolica.prog4.persistencia.helpers.EntityManagerFactoryManager;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -16,7 +16,7 @@ public class RuleDAOTest {
     private final EntityManagerFactory factory;
 
     public RuleDAOTest() {
-        factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+        factory = EntityManagerFactoryManager.getEntityManagerFactory();
     }
 
     @Test

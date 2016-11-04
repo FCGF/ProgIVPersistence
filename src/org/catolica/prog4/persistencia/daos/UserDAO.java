@@ -7,16 +7,16 @@ import javax.persistence.NoResultException;
 import org.catolica.prog4.persistencia.entities.User;
 
 public class UserDAO extends UserJpaController implements IUserDAO {
-    
+
     public UserDAO(EntityManagerFactory emf) {
         super(emf);
     }
-    
+
     @Override
     public List<User> findAll() {
         return super.findUserEntities();
     }
-    
+
     @Override
     public User findUser(String email, String senha) throws NoResultException {
         EntityManager em = getEntityManager();
@@ -28,6 +28,6 @@ public class UserDAO extends UserJpaController implements IUserDAO {
         } finally {
             em.close();
         }
-    }    
-    
+    }
+
 }

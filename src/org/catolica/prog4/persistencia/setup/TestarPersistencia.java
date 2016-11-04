@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
-import javax.persistence.Persistence;
 import org.catolica.prog4.persistencia.daos.CategoryDAO;
 import org.catolica.prog4.persistencia.daos.ProductDAO;
 import org.catolica.prog4.persistencia.daos.RuleDAO;
@@ -14,10 +13,9 @@ import org.catolica.prog4.persistencia.entities.Category;
 import org.catolica.prog4.persistencia.entities.Product;
 import org.catolica.prog4.persistencia.entities.Rule;
 import org.catolica.prog4.persistencia.entities.User;
+import org.catolica.prog4.persistencia.helpers.EntityManagerFactoryManager;
 
 public class TestarPersistencia {
-
-    private static final String PERSISTENCE_UNIT_NAME = "PersistenciaPU";
 
     public static void main(String[] args) {
         //createRuletest();
@@ -36,7 +34,7 @@ public class TestarPersistencia {
 
     private static void findAllUsersTest() {
         System.out.println("\n findAllUsersTest...");
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+        EntityManagerFactory factory =  EntityManagerFactoryManager.getEntityManagerFactory();
         UserDAO dao = new UserDAO(factory);
         List<User> lst = dao.findAll();
         lst.stream().forEach((o) -> {
@@ -46,7 +44,7 @@ public class TestarPersistencia {
 
     private static void findAllRulesTest() {
         System.out.println("\n findAllRulesTest...");
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+        EntityManagerFactory factory = EntityManagerFactoryManager.getEntityManagerFactory();
         RuleDAO dao = new RuleDAO(factory);
         List<Rule> lst = dao.findRuleEntities();
         lst.stream().forEach((o) -> {
@@ -56,7 +54,7 @@ public class TestarPersistencia {
 
     private static void findAllCategoriesTest() {
         System.out.println("\n findAllCategoriesTest...");
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+        EntityManagerFactory factory = EntityManagerFactoryManager.getEntityManagerFactory();
         CategoryDAO dao = new CategoryDAO(factory);
         List<Category> lst = dao.findAll();
         lst.stream().forEach((o) -> {
@@ -66,7 +64,7 @@ public class TestarPersistencia {
 
     private static void findAllProductsTest() {
         System.out.println("\n findAllProductsTest...");
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+        EntityManagerFactory factory = EntityManagerFactoryManager.getEntityManagerFactory();
         ProductDAO dao = new ProductDAO(factory);
         List<Product> lst = dao.findAll();
         lst.stream().forEach((o) -> {
@@ -83,7 +81,7 @@ public class TestarPersistencia {
         datas.put("Galateo", "Gerente");
         datas.put("Bill", "Diretor");
 
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+        EntityManagerFactory factory = EntityManagerFactoryManager.getEntityManagerFactory();
         UserDAO userDao = new UserDAO(factory);
         List<Rule> rules = new RuleDAO(factory).findAll();
         userDao.findUserEntities();
@@ -105,7 +103,7 @@ public class TestarPersistencia {
     private static void createRuletest() {
         System.out.println("\n createRuletest...");
         String[] datas = {"Administrador", "Comprador", "Vendedor", "Gerente", "Diretor"};
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+        EntityManagerFactory factory = EntityManagerFactoryManager.getEntityManagerFactory();
         RuleDAO dao = new RuleDAO(factory);
         dao.findRuleEntities();
         for (String data : datas) {
@@ -118,7 +116,7 @@ public class TestarPersistencia {
     private static void createCategorytest() {
         System.out.println("\n createCategorytest...");
         String[] datas = {"Convenience", "Shopping", "Specialty", "Emergency", "Unsought"};
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+        EntityManagerFactory factory = EntityManagerFactoryManager.getEntityManagerFactory();
         CategoryDAO dao = new CategoryDAO(factory);
         dao.findCategoryEntities();
         for (String data : datas) {
@@ -137,7 +135,7 @@ public class TestarPersistencia {
         datas.put("Bandages", "Emergency");
         datas.put("T-Shirt", "Unsought");
 
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+        EntityManagerFactory factory = EntityManagerFactoryManager.getEntityManagerFactory();
         ProductDAO productDao = new ProductDAO(factory);
         List<Category> categories = new CategoryDAO(factory).findAll();
         productDao.findProductEntities();
@@ -158,7 +156,7 @@ public class TestarPersistencia {
 
     private static User autenticar(String email, String senha) {
         System.out.println("\n autenticar...");
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+        EntityManagerFactory factory = EntityManagerFactoryManager.getEntityManagerFactory();
         UserDAO dao = new UserDAO(factory);
         User user;
         try {
