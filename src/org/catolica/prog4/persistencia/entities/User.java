@@ -14,13 +14,17 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "User.authenticate",
-            query = "SELECT o FROM User o WHERE o.email = :email AND o.senha = :senha"),
+            query = "SELECT o FROM User o WHERE o.email = :email AND o.senha = :senha")
+    ,
     @NamedQuery(name = "User.findby.name",
-            query = "SELECT o FROM User o WHERE o.nome = :nome"),
+            query = "SELECT o FROM User o WHERE o.nome = :nome")
+    ,
     @NamedQuery(name = "User.findby.email",
-            query = "SELECT o FROM User o WHERE o.email = :email"),
+            query = "SELECT o FROM User o WHERE o.email = :email")
+    ,
     @NamedQuery(name = "User.findby.keyword",
-            query = "SELECT o FROM User o WHERE o.nome LIKE :keyword ORDER BY o.nome"),
+            query = "SELECT o FROM User o WHERE o.nome LIKE :keyword ORDER BY o.nome")
+    ,
     @NamedQuery(name = "User.findall.orderby.name",
             query = "SELECT o FROM User o ORDER BY o.nome")
 })
@@ -45,6 +49,18 @@ public class User implements Serializable {
     @ManyToOne
     @JoinColumn(name = "rule_id", nullable = false)
     private Rule rule;
+
+    public User() {
+        super();
+    }
+
+    public User(String nome, String email, String senha, Rule rule) {
+        this();
+        setNome(nome);
+        setEmail(email);
+        setSenha(senha);
+        setRule(rule);
+    }
 
     @Override
     public int hashCode() {

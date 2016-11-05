@@ -28,6 +28,15 @@ public class Category implements Serializable {
     @OneToMany(mappedBy = "category")
     private List<Product> products;
 
+    public Category() {
+        super();
+    }
+
+    public Category(String nome) {
+        this();
+        setNome(nome);
+    }
+
     @Override
     public int hashCode() {
         int hash = 3;

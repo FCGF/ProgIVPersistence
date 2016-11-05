@@ -19,7 +19,8 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "Product.findby.name",
-            query = "SELECT o FROM Product o WHERE o.nome = :nome"),
+            query = "SELECT o FROM Product o WHERE o.nome = :nome")
+    ,
     @NamedQuery(name = "Product.findall.orderby.name",
             query = "SELECT o FROM Product o ORDER BY o.nome")
 })
@@ -44,6 +45,18 @@ public class Product implements Serializable {
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
+
+    public Product() {
+        super();
+    }
+
+    public Product(String nome, String description, double price, Category category) {
+        this();
+        setNome(nome);
+        setDescription(description);
+        setPrice(price);
+        setCategory(category);
+    }
 
     @Override
     public int hashCode() {

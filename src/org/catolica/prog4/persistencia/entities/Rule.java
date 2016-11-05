@@ -24,6 +24,15 @@ public class Rule implements Serializable {
     @OneToMany(mappedBy = "rule")
     private List<User> users;
 
+    public Rule() {
+        super();
+    }
+
+    public Rule(String nome) {
+        this();
+        setNome(nome);
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
